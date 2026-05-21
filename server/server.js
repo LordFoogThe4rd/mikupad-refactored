@@ -328,7 +328,7 @@ const db = new sqlite3.Database(storagePath, (err) => {
     }
 
     const zstdLibName = {
-        'win32': 'libsqlite_zstd.dll',
+        'win32': 'sqlite_zstd.dll',
         'darwin': 'libsqlite_zstd.dylib',
         'linux': 'libsqlite_zstd.so'
     }[process.platform] || 'libsqlite_zstd.so';

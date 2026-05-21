@@ -10,7 +10,7 @@
 - **Database schema v4** with per-table column names to avoid compression index collisions, plus V2→V3→V4 migration
 - **Dedicated Sessions modal** with search, sort by name/created/modified, and table layout
 
-> **Note:** The server requires the `sqlite-zstd` extension (`libsqlite_zstd.so` / `libsqlite_zstd.dll` / `libsqlite_zstd.dylib` depending on platform — the server auto-detects the correct one). Obtain it from [sqlite-zstd releases](https://github.com/phiresky/sqlite-zstd/releases) or build from source, then place it in `server/`.
+> **Note:** The server requires the `sqlite-zstd` extension (`libsqlite_zstd.so` / `sqlite_zstd.dll` / `libsqlite_zstd.dylib` depending on platform — the server auto-detects the correct one). Obtain it from [sqlite-zstd releases](https://github.com/phiresky/sqlite-zstd/releases) or build from source, then place it in `server/`.
 
 ---
 
