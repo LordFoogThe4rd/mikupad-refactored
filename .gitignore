@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Parcel build output
+dist/
+.parcel-cache/
+
+# Databases (SQLite)
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+server/logs/*
+!server/logs/.gitkeep
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Scratch / debug scripts
+server/scratch_list_tables.js
+
+# Server-specific
+server/node_modules/
+server/*.so
+server/*.dll
+server/*.dylib
+server/*.exe

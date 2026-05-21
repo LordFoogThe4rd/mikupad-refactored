@@ -1,0 +1,24 @@
+{
+  "name": "mikupad",
+  "source": "mikupad.html",
+  "scripts": {
+    "start": "parcel",
+    "clean": "rm -rf dist .parcel-cache",
+    "prebuild": "npm run clean",
+    "build": "parcel build mikupad.html --no-cache",
+    "postbuild": "rm -rf .parcel-cache"
+  },
+  "dependencies": {
+    "htm": "^3.1.1",
+    "marked": "^16.4.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-error-boundary": "^5.0.0",
+    "scrollview-resize": "^1.0.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.9.3",
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  }
+}
