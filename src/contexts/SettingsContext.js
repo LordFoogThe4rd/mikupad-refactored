@@ -112,7 +112,18 @@ export function SettingsProvider({ children, sessionStorage, templateStorage, th
 	const [ttsSpeakInputs, setTTSSpeakInputs] = usePersistentState('ttsSpeakInputs', true);
 	const [ttsMaxUserInput, setTTSMaxUserInput] = usePersistentState('ttsMaxUserInput', 50);
 
-
+	const [screenshotIncludeSessionName, setScreenshotIncludeSessionName] = usePersistentState('screenshotIncludeSessionName', true);
+	const [screenshotIncludeDate, setScreenshotIncludeDate] = usePersistentState('screenshotIncludeDate', true);
+	const [screenshotBackgroundUrl, setScreenshotBackgroundUrl] = usePersistentState('screenshotBackgroundUrl', '');
+	const [screenshotBackgroundColor, setScreenshotBackgroundColor] = usePersistentState('screenshotBackgroundColor', '#121212');
+	const [screenshotStoryFont, setScreenshotStoryFont] = usePersistentState('screenshotStoryFont', 'Open Sans');
+	const [screenshotGeneralFont, setScreenshotGeneralFont] = usePersistentState('screenshotGeneralFont', 'Open Sans');
+	const [screenshotFontWeight, setScreenshotFontWeight] = usePersistentState('screenshotFontWeight', '400');
+	const [screenshotFontSize, setScreenshotFontSize] = usePersistentState('screenshotFontSize', 18);
+	const [screenshotLineHeight, setScreenshotLineHeight] = usePersistentState('screenshotLineHeight', 28);
+	const [screenshotFontColor, setScreenshotFontColor] = usePersistentState('screenshotFontColor', '#c0c0c0');
+	const [screenshotAiTextColor, setScreenshotAiTextColor] = usePersistentState('screenshotAiTextColor', '#eac055');
+	const [screenshotModelAvatarUrl, setScreenshotModelAvatarUrl] = usePersistentState('screenshotModelAvatarUrl', '');
 
 	const state = {
 		sessionStorage, templateStorage, themeStorage, useSessionState, useDBTemplates, useDBThemes, isMikupadEndpoint,
@@ -139,7 +150,13 @@ export function SettingsProvider({ children, sessionStorage, templateStorage, th
 		disableLogprobs, setDisableLogprobs, postSamplingProbs, setPostSamplingProbs, showPromptPreview, setShowPromptPreview,
 		promptPreviewTokens, setPromptPreviewTokens, currentThemeName, setCurrentThemeName, allThemes, setAllThemes,
 		showMarkdownPreview, setShowMarkdownPreview, ttsEnabled, setTTSEnabled, ttsVoiceId, setTTSVoiceId, ttsPitch, setTTSPitch,
-		ttsRate, setTTSRate, ttsVolume, setTTSVolume, ttsSpeakInputs, setTTSSpeakInputs, ttsMaxUserInput, setTTSMaxUserInput
+		ttsRate, setTTSRate, ttsVolume, setTTSVolume, ttsSpeakInputs, setTTSSpeakInputs, ttsMaxUserInput, setTTSMaxUserInput,
+		screenshotIncludeSessionName, setScreenshotIncludeSessionName, screenshotIncludeDate, setScreenshotIncludeDate,
+		screenshotBackgroundUrl, setScreenshotBackgroundUrl, screenshotBackgroundColor, setScreenshotBackgroundColor,
+		screenshotStoryFont, setScreenshotStoryFont, screenshotGeneralFont, setScreenshotGeneralFont,
+		screenshotFontWeight, setScreenshotFontWeight, screenshotFontSize, setScreenshotFontSize,
+		screenshotLineHeight, setScreenshotLineHeight, screenshotFontColor, setScreenshotFontColor,
+		screenshotAiTextColor, setScreenshotAiTextColor, screenshotModelAvatarUrl, setScreenshotModelAvatarUrl
 	};
 
 	return html`

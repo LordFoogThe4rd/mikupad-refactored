@@ -3,13 +3,15 @@ import { useEffect, useRef } from 'react';
 import { useSettings } from '../contexts/SettingsContext.js';
 import { useGeneration } from '../contexts/GenerationContext.js';
 import { usePromptBuilder } from '../hooks/usePromptBuilder.js';
-import { SVG_Settings, SVG_SearchAndReplace, SVG_SplitView } from './icons/index.js';
+import { SVG_Settings, SVG_SearchAndReplace, SVG_SplitView, SVG_Camera } from './icons/index.js';
 import { SearchAndReplaceWidget } from './SearchAndReplaceWidget.js';
+import { useScreenshotCapture } from '../hooks/useScreenshotCapture.js';
 
 export function PromptContainer({ sidebarHeight }) {
 	const { showMarkdownPreview, setShowMarkdownPreview, isMobile, tokenHighlightMode, tokenColorMode, showPromptPreview, promptAreaWidth, setPromptAreaWidth, showProbsMode, setShowProbsMode, hideChatTemplates, systemPromptModeText, setSystemPromptModeText } = useSettings();
 	const { promptArea, promptOverlay, cancel, promptPreviewElement, promptChunks, setPromptChunks, currentPromptChunk, setCurrentPromptChunk, undoHovered, setUndoHovered, undoStack, redoStack, showProbs, setShowProbs, promptPreviewChunks, setPromptPreviewChunks, modalState, closeModal, toggleModal, markdownPreviewRef, isSyncingScroll, setSavedScrollTop, spellCheck, keyState, probsDelayTimer, setTriggerPredict } = useGeneration();
 	const { promptText, displayPromptChunks, cleanPromptText, origToClean, cleanToOrig } = usePromptBuilder();
+	const { takeScreenshot } = useScreenshotCapture();
 	const lastMouseToken = useRef(null);
 
 	useEffect(() => {
@@ -350,6 +352,20 @@ export function PromptContainer({ sidebarHeight }) {
 				className="textAreaSettings"
 				onClick=${() => setShowMarkdownPreview(p => !p)}>
 				<${SVG_SplitView}/>
+			</button>
+			<button
+				title="Screenshot Settings"
+				style=${{ "margin-top": "4.5em" }}
+				className="textAreaSettings"
+				onClick=${() => toggleModal("screenshot")}>
+				<${SVG_Settings}/>
+			</button>
+			<button
+				title="Take Screenshot"
+				style=${{ "margin-top": "6em" }}
+				className="textAreaSettings"
+				onClick=${takeScreenshot}>
+				<${SVG_Camera} style=${{ "height": "1.3em" }} />
 			</button>
 			${hideChatTemplates && html`<textarea
 				id="system-prompt-area"

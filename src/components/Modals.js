@@ -20,6 +20,7 @@ import { InstructModal } from './modals/InstructModal.js';
 import { ThemeManagerModal } from './modals/ThemeManagerModal.js';
 import { AIHordeSettingsModal } from './modals/AIHordeSettingsModal.js';
 import { CompressionInfoModal } from './modals/CompressionInfoModal.js';
+import { ScreenshotModal } from './modals/ScreenshotModal.js';
 import { SessionsModal } from './modals/SessionsModal.js';
 import { EditorContextMenu } from './EditorContextMenu.js';
 import { SVG_Stop } from './icons/index.js';
@@ -28,7 +29,20 @@ import { InputSlider } from './controls/InputSlider.js';
 import { SelectBox } from './controls/SelectBox.js';
 
 export function Modals({ toggleModal, currentThemeName, setCurrentThemeName, allThemes, setAllThemes, applyChatTemplate }) {
-	const { endpoint, setEndpointAPIKey, endpointAPIKey, endpointAPI, endpointModel, setEndpointModel, templates, selectedTemplate, setSelectedTemplate, templatesImport, setTemplates, templateStorage, grammar, setGrammar, isMikupadEndpoint, sessionStorage, fontSizeMultiplier, setFontSizeMultiplier, spellCheck, setSpellCheck, attachSidebar, setAttachSidebar, preserveCursorPosition, setPreserveCursorPosition, tokenHighlightMode, setTokenHighlightMode, tokenColorMode, setTokenColorMode, showProbsMode, setShowProbsMode, ttsEnabled, setTTSEnabled, ttsVoiceId, setTTSVoiceId, ttsPitch, setTTSPitch, ttsRate, setTTSRate, ttsVolume, setTTSVolume, ttsSpeakInputs, setTTSSpeakInputs, ttsMaxUserInput, setTTSMaxUserInput, useChatAPI, setUseChatAPI, memoryTokens, authorNoteTokens, authorNoteDepth, setAuthorNoteDepth, worldInfo, setWorldInfo, sillyTarvernWorldInfoJSON, setSillyTarvernWorldInfoJSON, logitBias, setLogitBias, logitBiasParam, setLogitBiasParam, templateList, setTemplateList } = useSettings();
+	const { endpoint, setEndpointAPIKey, endpointAPIKey, endpointAPI, endpointModel, setEndpointModel, templates, selectedTemplate, setSelectedTemplate, templatesImport, setTemplates, templateStorage, grammar, setGrammar, isMikupadEndpoint, sessionStorage, fontSizeMultiplier, setFontSizeMultiplier, spellCheck, setSpellCheck, attachSidebar, setAttachSidebar, preserveCursorPosition, setPreserveCursorPosition, tokenHighlightMode, setTokenHighlightMode, tokenColorMode, setTokenColorMode, showProbsMode, setShowProbsMode, ttsEnabled, setTTSEnabled, ttsVoiceId, setTTSVoiceId, ttsPitch, setTTSPitch, ttsRate, setTTSRate, ttsVolume, setTTSVolume, ttsSpeakInputs, setTTSSpeakInputs, ttsMaxUserInput, setTTSMaxUserInput, useChatAPI, setUseChatAPI, memoryTokens, authorNoteTokens, authorNoteDepth, setAuthorNoteDepth, worldInfo, setWorldInfo, sillyTarvernWorldInfoJSON, setSillyTarvernWorldInfoJSON, logitBias, setLogitBias, logitBiasParam, setLogitBiasParam, templateList, setTemplateList,
+		screenshotIncludeSessionName, setScreenshotIncludeSessionName,
+		screenshotIncludeDate, setScreenshotIncludeDate,
+		screenshotBackgroundUrl, setScreenshotBackgroundUrl,
+		screenshotBackgroundColor, setScreenshotBackgroundColor,
+		screenshotStoryFont, setScreenshotStoryFont,
+		screenshotGeneralFont, setScreenshotGeneralFont,
+		screenshotFontWeight, setScreenshotFontWeight,
+		screenshotFontSize, setScreenshotFontSize,
+		screenshotLineHeight, setScreenshotLineHeight,
+		screenshotFontColor, setScreenshotFontColor,
+		screenshotAiTextColor, setScreenshotAiTextColor,
+		screenshotModelAvatarUrl, setScreenshotModelAvatarUrl
+	} = useSettings();
 	const { cancel, modalState, closeModal, instructModalState, setInstructModalState, promptArea, predict, lastError, sessionEndpointConnecting, predictStartTokens, tokens, stoppingStringsError, drySequenceBreakersError, bannedTokensError, contextMenuState, setContextMenuState, setTriggerPredict, sessionEndpointError, setRejectedAPIKey } = useGeneration();
 
 	const { handleauthorNoteTokensChange, handleMemoryTokensChange } = useTokenCounters();
@@ -369,6 +383,24 @@ export function Modals({ toggleModal, currentThemeName, setCurrentThemeName, all
 			closeModal=${() => closeModal("sessions")}
 			sessionStorage=${sessionStorage}
 			cancel=${cancel}/>
+
+		<${ScreenshotModal}
+			isOpen=${modalState.screenshot}
+			closeModal=${() => closeModal("screenshot")}
+			settings=${{
+				screenshotIncludeSessionName, setScreenshotIncludeSessionName,
+				screenshotIncludeDate, setScreenshotIncludeDate,
+				screenshotBackgroundUrl, setScreenshotBackgroundUrl,
+				screenshotBackgroundColor, setScreenshotBackgroundColor,
+				screenshotStoryFont, setScreenshotStoryFont,
+				screenshotGeneralFont, setScreenshotGeneralFont,
+				screenshotFontWeight, setScreenshotFontWeight,
+				screenshotFontSize, setScreenshotFontSize,
+				screenshotLineHeight, setScreenshotLineHeight,
+				screenshotFontColor, setScreenshotFontColor,
+				screenshotAiTextColor, setScreenshotAiTextColor,
+				screenshotModelAvatarUrl, setScreenshotModelAvatarUrl
+			}}/>
 
 		<${EditorContextMenu}
 			isOpen=${contextMenuState.visible}
