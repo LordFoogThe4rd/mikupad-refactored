@@ -174,3 +174,15 @@ From the `server/` directory:
     ```
 * **Uncontrolled Textarea Scroll Preservation**: In `AppLayout.js`, the main prompt textarea updates in an uncontrolled manner during prediction. This ensures the user does not lose cursor positions, highlights, or scrolling alignments when text chunks stream in at high frequencies. Always maintain this pattern when updating prompt-related text structures.
 * **Storage Modifications**: When modifying session storage columns or tables, preserve the adapter architecture so changes apply to both IndexedDB and the SQLite server implementation. Always ensure schema migrations are coded gracefully (such as the database V3-to-V4 migration step).
+
+### Screenshot Capture
+
+The app has a native screenshot feature (ported from the [`mikupad-screenshot`](https://github.com/LordFoogThe4rd/mikupad-screenshot) userscript) that renders selected story text as a styled quote PNG.
+
+**Key files:**
+- `src/hooks/useScreenshotCapture.js` — Core logic: reads selected text, uses `promptChunks` from context to color-code AI vs User text, builds a hidden HTML layout, renders to PNG via `html-to-image`, opens result in a new tab.
+- `src/components/modals/ScreenshotModal.js` — Settings modal (12 fields: session name/date toggles, background URL/color, fonts, colors, avatar URL).
+
+**Settings** are stored via `usePersistentState` in `SettingsContext.js` (keyed with `screenshot*` prefix). Buttons (camera + gear) are in the PromptContainer toolbar.
+
+**Usage:** Select text in the editor, click the camera icon. The screenshot opens in a new tab ready to save. Click the gear icon to customize the layout.
