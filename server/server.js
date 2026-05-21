@@ -327,7 +327,12 @@ const db = new sqlite3.Database(storagePath, (err) => {
         process.exit(1);
     }
 
-    db.loadExtension(path.join(__dirname, 'libsqlite_zstd.so'), (err) => {
+    const zstdLibName = {
+        'win32': 'libsqlite_zstd.dll',
+        'darwin': 'libsqlite_zstd.dylib',
+        'linux': 'libsqlite_zstd.so'
+    }[process.platform] || 'libsqlite_zstd.so';
+    db.loadExtension(path.join(__dirname, zstdLibName), (err) => {
         if (err) {
             console.error('Failed to load sqlite-zstd extension:', err.message);
             process.exit(1);
