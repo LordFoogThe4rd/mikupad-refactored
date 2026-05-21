@@ -1,13 +1,14 @@
 # mikupad-refactored
 
-**Fork of [mikupad](https://github.com/lmg-anon/mikupad) by lmg-anon** — refactored to a modular Parcel-based project structure (JSX-less React via `htm/react`) with the original single-file HTML compiled version available separately.
+**Fork of [mikupad](https://github.com/lmg-anon/mikupad) by lmg-anon** — major architectural overhaul.
 
-## Differences from upstream
+## What's different
 
-- **Modular source** under `src/` instead of a monolithic HTML file
-- Uses **Parcel** as bundler and dev server
-- Components use **`htm/react`** tagged template literals instead of inline HTML-in-JS
-- Added **story quote screenshot capture** feature
+- **Modular Parcel 2 project** (~50+ files across `src/`) instead of a single monolithic HTML
+- **React Context API** state management (`SettingsContext`, `GenerationContext`) instead of inline global state
+- **sqlite-zstd transparent Zstandard compression** at the database level, with auto-vacuum and background dictionary training every 5 minutes
+- **Database schema v4** with per-table column names to avoid compression index collisions, plus V2→V3→V4 migration
+- **Dedicated Sessions modal** with search, sort by name/created/modified, and table layout
 
 ---
 
